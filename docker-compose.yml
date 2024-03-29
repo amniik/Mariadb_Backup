@@ -1,0 +1,25 @@
+services:
+  backup:
+    build: .
+    container_name: Backup_Job
+    environment:
+      DB_HOSTNAME: **********
+      DB_PORT: **********
+      DB_USERNAME: **********
+      DB_PASSWORD: **********
+      DC: **********
+      LOCAL_DIRECTORY: /backups
+      ZIP_PASS: **********
+      LOCAL_RETENTION_NUMBER: 2
+      BACKUP_TYPE: mysqldump
+      AWS_ACCESS_KEY_ID: **********
+      AWS_SECRET_ACCESS_KEY: **********
+      AWS_REGION: **********
+      BUCKET_NAME: os-database-backup
+      AR_ENDPOINT: **********
+      S3_RETENTION_NUMBER: 2
+      FIRST_MONTH_RETENTION_NUMBER: 2
+      SLACK_CHANNEL_NAME: openstack-alarm-backup
+      SLACK_WEBHOOK_URL: **********
+    volumes:
+      - ./backups:/backups
